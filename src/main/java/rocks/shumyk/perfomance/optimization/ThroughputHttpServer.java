@@ -1,4 +1,4 @@
-package rocks.shumyk.fundamentals.perfomance.optimization;
+package rocks.shumyk.perfomance.optimization;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;

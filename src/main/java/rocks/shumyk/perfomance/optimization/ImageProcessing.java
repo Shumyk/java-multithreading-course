@@ -1,4 +1,4 @@
-package rocks.shumyk.fundamentals.perfomance.optimization;
+package rocks.shumyk.perfomance.optimization;
 
 import lombok.extern.slf4j.Slf4j;
 
