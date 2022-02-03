@@ -1,7 +1,6 @@
 package rocks.shumyk.data.sharing;
 
-import lombok.Data;
-import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -21,7 +20,7 @@ public class ResourceSharing {
 		log.info("We currently have {} items", counter.getItems());
 	}
 
-	@Data
+	@RequiredArgsConstructor
 	public static class DecrementingThread extends Thread {
 		private final InventoryCounter counter;
 
@@ -33,7 +32,7 @@ public class ResourceSharing {
 		}
 	}
 
-	@Data
+	@RequiredArgsConstructor
 	public static class IncrementingThread extends Thread {
 		private final InventoryCounter counter;
 
@@ -46,14 +45,26 @@ public class ResourceSharing {
 	}
 
 	public static class InventoryCounter {
-		@Getter private int items = 0;
+		private int items = 0;
+
+		private final Object lock = new Object();
 
 		public void increment() {
-			items++;
+			synchronized (this.lock) {
+				items++;
+			}
 		}
 
 		public void decrement() {
-			items--;
+			synchronized (this.lock) {
+				items--;
+			}
+		}
+
+		public int getItems() {
+			synchronized (this.lock) {
+				return items;
+			}
 		}
 	}
 }
