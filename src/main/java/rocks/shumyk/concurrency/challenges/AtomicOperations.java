@@ -1,4 +1,4 @@
-package rocks.shumyk.concurrency.challanges;
+package rocks.shumyk.concurrency.challenges;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
